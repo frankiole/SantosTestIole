@@ -3,7 +3,7 @@
  * Date: 6.8.2020
  * File: Program.cs
  * Desc: A program that filters and sorts doubles into histogram bins
- * Input: args[0], input text file path; args[1], output histogram text file path
+ * Input: args[0], input text file path (C:\...\PreEmploymentTaskSolution.txt); args[1], output histogram text file path
  **********************/
 
 using System;
