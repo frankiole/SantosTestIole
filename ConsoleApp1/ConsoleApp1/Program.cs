@@ -3,7 +3,7 @@
  * Date: 6.8.2020
  * File: Program.cs
  * Desc: A program that filters and sorts doubles into histogram bins
- * Input: inputTXT, input text file path; outputTXT, output histogram text file path
+ * Input: args[0], input text file path; args[1], output histogram text file path
  **********************/
 
 using System;
@@ -81,11 +81,13 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            // hardcoded text file paths
-            string inputTXT = @"C:\Users\fiole\source\repos\ConsoleApp1\ConsoleApp1\PreEmploymentTaskData.txt";
-            string outputTXT = @"C:\Users\fiole\source\repos\ConsoleApp1\ConsoleApp1\Solved.txt";
-
-            var nums = System.IO.File.ReadLines(inputTXT); // reads input text file path
+            if (args.Count() < 2) // checks if there are enough arguments
+            {
+                Console.WriteLine("Error: not enough arguments");
+                Environment.Exit(0);
+            }
+            
+            var nums = System.IO.File.ReadLines(args[0]); // reads input text file
 
             List<double> values = new List<double> {}; // allocates space for values stored in the text file
 
@@ -100,7 +102,7 @@ namespace ConsoleApp1
 
             List<int> histogram = Histogram(values);
 
-            TextWriter tw = new StreamWriter(outputTXT); // prepares the text writer
+            TextWriter tw = new StreamWriter(args[1]); // prepares the text writer
 
             foreach (double i in histogram) // writes calculated histogram data for 255 bins
             {
